@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../globals.css";
-import {
-  ClerkProvider,
-} from '@clerk/nextjs'
-import Container from "@/components/Container";
+import { ClerkProvider } from "@clerk/nextjs";
 import SideMenu from "@/components/SideMenu";
 import HeaderBar from "@/components/HeaderBar";
 import { SanityLive } from "@/sanity/lib/live";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import DisableDraftMode from "@/components/DisableDraftMode";
+import BodyContainer from "@/components/Container";
 
-
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const outfit = localFont({
+  src: "../fonts/Outfit-Regular.ttf",
+  variable: "--font-outfit-regular",
   weight: "100 900",
 });
 const geistMono = localFont({
@@ -36,23 +33,23 @@ export default async function RootLayout({
 }>) {
   return (
     <ClerkProvider dynamic>
-    <html lang="en">
+      <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+          className={`${outfit.variable} ${geistMono.variable} antialiased`}
+        >
+          {(await draftMode()).isEnabled && (
+            <>
+              <DisableDraftMode />
+              <VisualEditing />
+            </>
+          )}
 
-{(await draftMode()).isEnabled && (<><DisableDraftMode/>
-<VisualEditing />
-
-</>)}
-
-
-        <HeaderBar />
-        {children}
-        <SideMenu  />
-        <SanityLive/>
-      </body>
-    </html>
+          <HeaderBar />
+          <BodyContainer>{children}</BodyContainer>
+          <SideMenu />
+          <SanityLive />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

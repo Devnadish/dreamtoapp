@@ -68,14 +68,60 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type JobsType = {
+  _id: string;
+  _type: "jobsType";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+};
+
+export type Jobs = {
+  _id: string;
+  _type: "jobs";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  location?: string;
+  type?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "jobsType";
+  }>;
+  slug?: Slug;
+};
+
 export type Post = {
   _id: string;
   _type: "post";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  department?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "department";
+  };
   title?: string;
   slug?: Slug;
+  description?: string;
   author?: {
     _ref: string;
     _type: "reference";
@@ -171,6 +217,15 @@ export type Author = {
     _type: "block";
     _key: string;
   }>;
+};
+
+export type Department = {
+  _id: string;
+  _type: "department";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
 };
 
 export type Category = {
@@ -278,19 +333,34 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | JobsType | Jobs | Post | Author | Department | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/homePage/getAllservice.ts
 // Variable: ALL_SERVICES_QUERY
-// Query: *[_type=="post"]{title}
+// Query: *[_type=="post" && references(*[_type=="department" && title == "Service"]._id)]{  title,  "departmentTitle": department->title, // Use a string key to avoid syntax issues  "slug":slug.current,  mainImage,  description}
 export type ALL_SERVICES_QUERYResult = Array<{
   title: string | null;
+  departmentTitle: string | null;
+  slug: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  description: string | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n    *[_type==\"post\"]{title}\n        \n        ": ALL_SERVICES_QUERYResult;
+    "\n   *[_type==\"post\" && references(*[_type==\"department\" && title == \"Service\"]._id)]{\n  title,\n  \"departmentTitle\": department->title, // Use a string key to avoid syntax issues\n  \"slug\":slug.current,\n  mainImage,\n  description\n}\n        ": ALL_SERVICES_QUERYResult;
   }
 }
