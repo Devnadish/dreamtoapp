@@ -9,6 +9,7 @@ import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import DisableDraftMode from "@/components/DisableDraftMode";
 import BodyContainer from "@/components/Container";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const outfit = localFont({
   src: "../fonts/Outfit-Regular.ttf",
@@ -33,7 +34,7 @@ export default async function RootLayout({
 }>) {
   return (
     <ClerkProvider dynamic>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${outfit.variable} ${geistMono.variable} antialiased`}
         >
@@ -44,9 +45,11 @@ export default async function RootLayout({
             </>
           )}
 
-          <HeaderBar />
-          <BodyContainer>{children}</BodyContainer>
-          <SideMenu />
+          <ThemeProvider>
+            <HeaderBar />
+            <BodyContainer>{children}</BodyContainer>
+            <SideMenu />
+          </ThemeProvider>
           <SanityLive />
         </body>
       </html>
