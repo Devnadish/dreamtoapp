@@ -8,25 +8,26 @@ import { Input } from "./ui/input";
 import { MajesticonsLogin } from "./icons/Login";
 import ThemeSwitch from "./ThemeSwitch";
 import LangSwicher from "./LangSwicher";
+import { useRouter, usePathname } from "next/navigation";
 
 function HeaderBar() {
   const { user } = useUser();
-  console.log(user);
   return (
-    <header className="flex items-center gap-4  justify-between fixed top-0 left-0 w-full p-4 z-10 bg-white/20 backdrop-blur-3xl shadow-lg">
+    <header className="flex items-center justify-between fixed top-0 left-0 w-full p-4 h-[60px] z-10 bg-white/20 backdrop-blur-3xl shadow-lg">
       <Logo />
 
-      <div className="flex items-center gap-4 ">
+      <div className="flex items-center gap-4">
+        <BackButton />
         <ThemeSwitch />
         <LangSwicher />
         <ClerkLoaded>
           {user ? (
-            <div className="flex items-center  flex-col">
+            <div className="flex items-center flex-col">
               <UserButton />
-              <p className="text-xs text-foreground">{user.firstName}</p>
+              <p className="text-sm text-foreground">{user.firstName}</p>
             </div>
           ) : (
-            <div className="text-foreground bg-orangeColor  rounded-md w-[40px] h-[40px] flex items-center justify-center">
+            <div className="text-foreground bg-orangeColor rounded-md w-10 h-10 flex items-center justify-center">
               <SignInButton mode="modal">
                 <MajesticonsLogin className="w-6 h-6" />
               </SignInButton>
@@ -39,3 +40,17 @@ function HeaderBar() {
 }
 
 export default HeaderBar;
+
+const BackButton: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  if (isHome) return null;
+
+  return (
+    <button onClick={() => router.back()} className="text-foreground">
+      Back
+    </button>
+  );
+};

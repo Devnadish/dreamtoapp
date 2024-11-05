@@ -336,13 +336,30 @@ export type SanityImageMetadata = {
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | JobsType | Jobs | Post | Author | Department | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/homePage/getAllservice.ts
-// Variable: ALL_SERVICES_QUERY
-// Query: *[_type=="post" && references(*[_type=="department" && title == "Service"]._id)]{  title,  "departmentTitle": department->title, // Use a string key to avoid syntax issues  "slug":slug.current,  mainImage,  description}
-export type ALL_SERVICES_QUERYResult = Array<{
-  title: string | null;
-  departmentTitle: string | null;
-  slug: string | null;
-  mainImage: {
+// Variable: ALL_DATA
+// Query: *[_type=="post" && references(*[_type=="department" && title == $departmentType]._id)]
+export type ALL_DATAResult = Array<{
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  department?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "department";
+  };
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
+  mainImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -353,14 +370,126 @@ export type ALL_SERVICES_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
-  description: string | null;
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  publishedAt?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
 }>;
+// Variable: POST_BY_SLUG
+// Query: *[_type=="post" && slug.current == $slug][0]
+export type POST_BY_SLUGResult = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  department?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "department";
+  };
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  publishedAt?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n   *[_type==\"post\" && references(*[_type==\"department\" && title == \"Service\"]._id)]{\n  title,\n  \"departmentTitle\": department->title, // Use a string key to avoid syntax issues\n  \"slug\":slug.current,\n  mainImage,\n  description\n}\n        ": ALL_SERVICES_QUERYResult;
+    "\n   *[_type==\"post\" && references(*[_type==\"department\" && title == $departmentType]._id)]\n   ": ALL_DATAResult;
+    "\n    *[_type==\"post\" && slug.current == $slug][0]\n    ": POST_BY_SLUGResult;
   }
 }

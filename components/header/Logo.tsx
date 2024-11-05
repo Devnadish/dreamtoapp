@@ -7,9 +7,9 @@ const Logo = () => {
     <Link
       href={`/`}
       prefetch={false}
-      // className="flex justify-center items-center w-[50px] h-[50px] bg-white rounded-xl"
+      className="flex justify-center items-center w-[40px] h-[40px] bg-white rounded-xl md:w-[60px] md:h-[60px]"
     >
-      <div className="flex justify-center items-center w-[50px] h-[50px] bg-white rounded-lg z-10">
+      <div className="flex justify-center items-center w-[40px] h-[40px] bg-white rounded-lg z-10">
         <Image
           src={logo}
           alt={"Dream To App"}
