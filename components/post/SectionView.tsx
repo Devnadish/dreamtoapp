@@ -21,10 +21,9 @@ type TypeDefine = {
   posts: Post[];
   title: string;
   icon: React.ReactNode;
-  gallery?: boolean;
 };
 
-const SectionView = ({ posts, title, icon, gallery }: TypeDefine) => {
+const SectionView = ({ posts, title, icon }: TypeDefine) => {
   const [isExpanded, setIsExpanded] = useState(false); // State to manage expansion
   const displayedPosts = isExpanded ? posts : posts.slice(0, 3); // Show 3 posts by default
 
@@ -51,7 +50,7 @@ const SectionView = ({ posts, title, icon, gallery }: TypeDefine) => {
         </Button>
       </div>
 
-      <PostList posts={posts} isExpanded={isExpanded} gallery={gallery} />
+      <PostList posts={posts} isExpanded={isExpanded} />
     </div>
   );
 };

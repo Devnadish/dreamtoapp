@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+      {
+        protocol: "https",
+        hostname: "dreamtoapp-worksample.s3.eu-north-1.amazonaws.com",
+      },
     ],
   },
 };

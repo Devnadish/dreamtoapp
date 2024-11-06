@@ -51,25 +51,21 @@ export default async function Home() {
       data: services,
       title: "Our Service",
       icon: <IcRoundTouchApp width={38} height={38} />,
-      gallery: true,
     },
     {
       data: experts,
       title: "Our Expertise",
       icon: <FileIconsPowerbuilder width={38} height={38} />,
-      gallery: false,
     },
     {
       data: support,
       title: "Exclusively yours",
       icon: <MaterialSymbolsPartnerExchange width={38} height={38} />,
-      gallery: false,
     },
     {
       data: provide,
       title: "We Ensure",
       icon: <MdiApprove width={38} height={38} />,
-      gallery: true,
     },
   ];
 
@@ -81,7 +77,6 @@ export default async function Home() {
             posts={section.data}
             title={section.title}
             icon={section.icon}
-            gallery={section.gallery}
           />
         </Suspense>
       ))}

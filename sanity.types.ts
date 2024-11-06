@@ -178,6 +178,8 @@ export type Post = {
     _type: "image";
     _key: string;
   }>;
+  gallery?: boolean;
+  galleryPath?: string;
 };
 
 export type Author = {
@@ -409,6 +411,8 @@ export type ALL_DATAResult = Array<{
     _type: "image";
     _key: string;
   }>;
+  gallery?: boolean;
+  galleryPath?: string;
 }>;
 // Variable: POST_BY_SLUG
 // Query: *[_type=="post" && slug.current == $slug][0]
@@ -483,6 +487,8 @@ export type POST_BY_SLUGResult = {
     _type: "image";
     _key: string;
   }>;
+  gallery?: boolean;
+  galleryPath?: string;
 } | null;
 
 // Query TypeMap

@@ -5,10 +5,9 @@ import { Post } from "@/sanity.types";
 type PostListProps = {
   posts: Post[];
   isExpanded: boolean;
-  gallery?: boolean;
 };
 
-const PostList = ({ posts, isExpanded, gallery }: PostListProps) => {
+const PostList = ({ posts, isExpanded }: PostListProps) => {
   const displayedPosts = isExpanded ? posts : posts.slice(0, 3); // Show only 2 posts by default
 
   return (
@@ -23,7 +22,7 @@ const PostList = ({ posts, isExpanded, gallery }: PostListProps) => {
             exit={{ opacity: 0 }}
             className="flex flex-wrap justify-center w-full   "
           >
-            <PostCard post={post} gallery={gallery} />
+            <PostCard post={post} />
           </motion.div>
         ))}
       </AnimatePresence>

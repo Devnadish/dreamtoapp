@@ -10,6 +10,7 @@
     "typegen": "npx sanity@latest schema extract && npx sanity@latest  typegen generate"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.685.0",
     "@clerk/nextjs": "^6.1.0",
     "@hookform/resolvers": "^3.9.1",
     "@portabletext/react": "^3.1.0",

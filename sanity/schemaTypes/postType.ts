@@ -59,6 +59,14 @@ export const postType = defineType({
       name: "body",
       type: "blockContent",
     }),
+    defineField({
+      name: "gallery",
+      type: "boolean",
+    }),
+    defineField({
+      name: "galleryPath",
+      type: "string",
+    }),
   ],
   preview: {
     select: {

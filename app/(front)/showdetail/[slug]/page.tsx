@@ -2,6 +2,7 @@ import { imageUrl } from "@/lib/imageUrl";
 import { getPost } from "@/sanity/lib/homePage/getAllservice";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function Page({
@@ -11,15 +12,26 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const post = await getPost(slug);
-  console.log(post);
   if (!post) {
     return notFound();
   }
-
+  console.log(post);
   return (
     <div className="max-w-4xl mx-auto p-6 flex flex-col gap-6 items-center justify-center bg-background dark:bg-background-dark">
-      {/* add button to go to the gallray if there is one */}
-      <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
+      <div className="w-full flex flex-row items-center justify-between">
+        <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
+        {post.gallery && (
+          <Link
+            href={{
+              pathname: `/gallary/${post.slug?.current}`,
+              query: { path: post?.galleryPath },
+            }}
+            className="bg-secondary text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
+          >
+            View Gallery
+          </Link>
+        )}
+      </div>
       <div className="w-full mb-6">
         <Image
           src={
