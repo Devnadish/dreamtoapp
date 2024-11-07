@@ -39,10 +39,10 @@ export default async function RootLayout({
           className={`${outfit.variable} ${geistMono.variable} antialiased`}
         >
           {(await draftMode()).isEnabled && (
-            <>
+            <div className="hidden sm:block">
               <DisableDraftMode />
               <VisualEditing />
-            </>
+            </div>
           )}
 
           <ThemeProvider>

@@ -9,6 +9,7 @@ import { MajesticonsLogin } from "./icons/Login";
 import ThemeSwitch from "./ThemeSwitch";
 import LangSwicher from "./LangSwicher";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 
 function HeaderBar() {
   const { user } = useUser();
@@ -16,6 +17,9 @@ function HeaderBar() {
     <header className="flex items-center justify-between fixed top-0 left-0 w-full p-4 h-[60px] z-10 bg-white/20 backdrop-blur-3xl shadow-lg">
       <Logo />
 
+      <Link href="/worksample" className="text-foreground">
+        W
+      </Link>
       <div className="flex items-center gap-4">
         <BackButton />
         <ThemeSwitch />

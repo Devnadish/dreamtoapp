@@ -46,7 +46,7 @@ function ImageGallery({
               fill
               className="object-contain transition-transform duration-300 transform group-hover:scale-105"
               loading="lazy"
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
             <div onClick={() => handleExpandClick(image)}>
               <ShowImage
