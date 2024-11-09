@@ -22,7 +22,7 @@ const PostList = ({ posts, isExpanded }: PostListProps) => {
             exit={{ opacity: 0 }}
             className="flex flex-wrap justify-center w-full   "
           >
-            <PostCard post={post} />
+            <PostCard post={post}   />
           </motion.div>
         ))}
       </AnimatePresence>

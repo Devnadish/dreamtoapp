@@ -7,13 +7,13 @@ import { IcRoundTouchApp } from "@/components/icons/OurService";
 import SectionView from "@/components/post/SectionView";
 import { getData } from "@/sanity/lib/homePage/getAllservice";
 import { Suspense } from "react";
-
+import {getTranslations} from 'next-intl/server';
 // Metadata configuration using Next.js 15 metadata API
 export const metadata: Metadata = {
-  title: "Your Page Title",
+  title: "Dream To App",
   description: "A brief description of your page for SEO.",
   keywords: "keyword1, keyword2, keyword3",
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "khalid nadish" }],
   openGraph: {
     title: "Your Page Title",
     description: "A brief description of your page for SEO.",
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
 };
 
 // Optimize static generation and revalidation
-export const dynamic = "force-static";
-export const revalidate = 60;
+// export const dynamic = "force-static";
+// export const revalidate = 60;
 
 // Create loading components for better UX
 const LoadingSection = () => (
@@ -38,6 +38,7 @@ const LoadingSection = () => (
 );
 
 export default async function Home() {
+ const t = await getTranslations('HomePage');
   // Parallel data fetching with error handling
   const [services, experts, support, provide] = await Promise.all([
     getData("Service").catch(() => []),
@@ -49,22 +50,22 @@ export default async function Home() {
   const sections = [
     {
       data: services,
-      title: "Our Service",
+      title: t("Service"),
       icon: <IcRoundTouchApp width={38} height={38} />,
     },
     {
       data: experts,
-      title: "Our Expertise",
+      title: t("Expert"),
       icon: <FileIconsPowerbuilder width={38} height={38} />,
     },
     {
       data: support,
-      title: "Exclusively yours",
+      title: t("Support"),
       icon: <MaterialSymbolsPartnerExchange width={38} height={38} />,
     },
     {
       data: provide,
-      title: "We Ensure",
+      title:t("free"),
       icon: <MdiApprove width={38} height={38} />,
     },
   ];

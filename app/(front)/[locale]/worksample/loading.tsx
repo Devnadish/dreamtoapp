@@ -1,3 +1,4 @@
+import { SkeletonProps } from "@/constant/type";
 import React from "react";
 
 // Define the Loading component
@@ -26,9 +27,7 @@ const WorkeSkelton: React.FC = () => {
 };
 
 // Define the Skeleton component (assuming it's a placeholder)
-interface SkeletonProps {
-  className: string;
-}
+
 
 const Skeleton: React.FC<SkeletonProps> = ({ className }) => {
   return <div className={`bg-gray-300 animate-pulse ${className}`} />;

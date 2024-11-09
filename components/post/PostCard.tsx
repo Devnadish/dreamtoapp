@@ -8,16 +8,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { imageUrl } from "@/lib/imageUrl";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
-const PostCard = React.memo(({ post }: { post: Post }) => {
+const PostCard = React.memo(({ post }: { post: Post}) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
-
+  const t = useTranslations("button");
+  const locale = useLocale();
   return (
-    <Card className="w-full sm:w-[350px] flex flex-col min-w-[300px] max-w-[300px] h-full mx-auto">
+    <Card className="w-full   flex flex-col   h-full mx-auto">
       <div className="relative w-full h-0 pb-[50%]">
         <Image
           src={
@@ -62,21 +63,21 @@ const PostCard = React.memo(({ post }: { post: Post }) => {
       </CardContent>
       <CardFooter className="flex flex-row items-center w-full justify-between">
         <Link
-          className="bg-secondary text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
-          href={`/showdetail/${post.slug?.current}`}
+          className="bg-secondary font-cairo font-[400] text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
+          href={`/${locale}/showdetail/${post.slug?.current}`}
         >
-          Details
+          {t("details")}
         </Link>
 
         {post.gallery && (
           <Link
             href={{
-              pathname: `/gallary/${post.slug?.current}`,
+              pathname: `/${locale}/gallary/${post.slug?.current}`,
               query: { path: post?.galleryPath },
             }}
-            className="bg-secondary text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
+            className="bg-secondary font-cairo  text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
           >
-            View Gallery
+            {t("showGallery")}
           </Link>
         )}
       </CardFooter>

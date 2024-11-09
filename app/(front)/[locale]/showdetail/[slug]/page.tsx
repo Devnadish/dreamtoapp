@@ -8,14 +8,14 @@ import { notFound } from "next/navigation";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const slug = (await params).slug;
+  const { locale, slug } = await params;
   const post = await getPost(slug);
   if (!post) {
     return notFound();
   }
-  console.log(post);
+  console.log(locale);
   return (
     <div className="max-w-4xl mx-auto p-6 flex flex-col gap-6 items-center justify-center bg-background dark:bg-background-dark">
       <div className="w-full flex flex-row items-center justify-between">
@@ -23,7 +23,7 @@ export default async function Page({
         {post.gallery && (
           <Link
             href={{
-              pathname: `/gallary/${post.slug?.current}`,
+              pathname: `/${locale}/gallery/${post.slug?.current}`,
               query: { path: post?.galleryPath },
             }}
             className="bg-secondary text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"

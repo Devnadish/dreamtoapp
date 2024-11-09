@@ -6,13 +6,29 @@ import { useTheme } from "next-themes";
 import arabic from "@/public/locales/arabic.png";
 import english from "@/public/locales/english.png";
 import Image from "next/image";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LangSwicher() {
+  const locale = useLocale();
   const [mounted, setMounted] = useState(false);
   const [lang, setLang] = useState("ar");
-  // const { setTheme, resolvedTheme } = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
+
+
+
+
 
   useEffect(() => setMounted(true), []);
+  useEffect(() => setLang(locale || "ar"), [locale]);
+
+  const toggleLanguage = () => {
+    setLang((prevLang) => (prevLang === "ar" ? "en" : "ar"));
+     const newLocale = lang === "ar" ? "en" : "ar";
+    const path = pathname.split("/").slice(2).join("/");
+    router.push(`/${newLocale}/${path}`);
+  };
 
   if (!mounted) {
     return (
@@ -28,34 +44,19 @@ export default function LangSwicher() {
     );
   }
 
-  if (lang === "ar") {
-    return (
+  return (
+    <div className="cursor-pointer" onClick={toggleLanguage}> 
       <Image
-        src={arabic}
+        src={locale === "ar" ? arabic : english}
         width={24}
         height={24}
         sizes="24x24"
         alt="Loading Light/Dark Toggle"
         priority={false}
-        onClick={() => {
-          setLang("en");
-        }}
       />
-    );
-  }
-  if (lang === "en") {
-    return (
-      <Image
-        src={english}
-        width={24}
-        height={24}
-        sizes="24x24"
-        alt="Loading Light/Dark Toggle"
-        priority={false}
-        onClick={() => {
-          setLang("ar");
-        }}
-      />
-    );
-  }
+    </div>
+  );
 }
+  
+   
+     

@@ -2,10 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { getImages } from "@/lib/awsImages";
+import { TaskCounterProps } from "@/constant/type";
 
-interface TaskCounterProps {
-  prefix: string;
-}
+
 
 const TaskCounter: React.FC<TaskCounterProps> = ({ prefix }) => {
   const [loading, setLoading] = useState<boolean>(true);

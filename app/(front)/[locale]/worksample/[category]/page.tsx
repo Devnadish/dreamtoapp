@@ -1,20 +1,18 @@
 import { getImages } from "@/lib/awsImages";
 import React from "react";
 import ImageGallery from "@/components/ImageGallery";
+import { propType } from "@/constant/type";
 
 export const dynamic = "force-dynamic";
 
-interface propType {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
+ 
 
 export default async function Page({ params, searchParams }: propType) {
-  const slug = (await params).slug;
-  const galleryPath = (await searchParams).path;
+  const category = (await params).category;
+  const prefix = (await searchParams).prefix;
 
-  const unsluggedSlug = slug.replace(/-/g, " ");
-  const gallery = await getImages(galleryPath + "/");
+  const unsluggedSlug = category.replace(/-/g, " ");
+  const gallery = await getImages(prefix + "/");
 
   if (!gallery) {
     return <h1>No images found for this gallery.</h1>;

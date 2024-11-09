@@ -1,11 +1,9 @@
 "use client";
 
+import { ErrorBoundaryProps } from "@/constant/type";
 import { useEffect } from "react";
 
-interface ErrorBoundaryProps {
-  error: Error & { digest?: string };
-  reset: () => void;
-}
+
 
 export default function ErrorBoundary({ error, reset }: ErrorBoundaryProps) {
   useEffect(() => {

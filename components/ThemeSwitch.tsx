@@ -11,6 +11,11 @@ export default function ThemeSwitch() {
 
   useEffect(() => setMounted(true), []);
 
+  // Add a function to handle theme change
+  const handleThemeChange = (theme: string) => {
+    setTheme(theme);
+  };
+
   if (!mounted)
     return (
       <Image
@@ -25,10 +30,10 @@ export default function ThemeSwitch() {
     );
 
   if (resolvedTheme === "dark") {
-    return <Sun onClick={() => setTheme("light")} />;
+    return <Sun onClick={() => handleThemeChange("light")} />;
   }
 
   if (resolvedTheme === "light") {
-    return <MoonStar onClick={() => setTheme("dark")} />;
+    return <MoonStar onClick={() => handleThemeChange("dark")} />;
   }
 }

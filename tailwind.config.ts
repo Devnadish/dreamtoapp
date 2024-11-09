@@ -89,6 +89,8 @@ const config: Config = {
       fontFamily: {
         outfit: ["var(--font-outfit-regular)", "system-ui", "sans-serif"], // Add Geist Sans
         geistMono: ["var(--font-geist-mono)", "Menlo", "monospace"], // Add Geist Mono
+        amiri: ["var(--font-amiri)", "serif"], // Add Amiri
+        cairo: ["var(--font-cairo)", "sans-serif"], // Add Cairo
       },
     },
   },

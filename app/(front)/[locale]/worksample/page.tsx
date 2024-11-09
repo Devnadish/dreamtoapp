@@ -17,22 +17,106 @@ import Image from "next/image";
 import Link from "next/link";
 import TaskCounter from "@/components/TaskCounter";
 import { convertToSlug } from "@/lib/nadish";
+import {getTranslations} from 'next-intl/server';
 export const metadata = {
   title: "Our Work",
 };
 
-async function page() {
-  const data = myWork2Data();
+async function page({params}:{params:{locale:string}}) {
+  console.log(params.locale)
+  const t = await getTranslations("workSample");
+  const data= [
+      {
+        id: "sm",
+        title: t("smMenuTilte"),
+        icon: <SimpleIconsDm />,
+        prefix: "sm",
+      },
+      {
+        id: "uiux",
+        title: t("uiUxMenuTitle"),
+        icon: <SimpleIconsNextui />,
+        prefix: "ui",
+      },
+      {
+        id: "identity",
+        title: t("identityMenuTitle"),
+        icon: <GuidanceVisualImpairment />,
+        prefix: "Identity",
+      },
+      {
+        id: "signboard",
+        title: t("singBoardMEnuTitle"),
+        icon: <TeenyiconsSignOutline />,
+        prefix: "sinboard",
+      },
+      {
+        id: "cnc",
+        title: t("cncMenuTitle"),
+        icon: <GameIconsCircularSawblade />,
+        prefix: "cnc",
+        taskCounter: 5,
+      },
+      {
+        id: "Character",
+        title: t("Character"),
+        icon: <GameIconsCharcuterie />,
+        prefix: "character",
+      },
+      {
+        id: "Coverpage",
+        title: t("Coverpage"),
+        icon: <GisLandcoverMap />,
+        prefix: "coverage",
+      },
+      {
+        id: "Logo",
+        title: t("Logo"),
+        icon: <FluentMdl2PythonLogoYellow />,
+        prefix: "logo",
+      },
+      {
+        id: "flyer",
+        title: t("flyer"),
+        icon: <CodiconFileMedia />,
+
+        prefix: "flyer",
+      },
+      {
+        id: "infograph",
+        title: t("infograph"),
+        icon: <TablerChartInfographic />,
+        prefix: "infograph",
+      },
+      {
+        id: "menu",
+        title: t("menu"),
+        icon: <IcSharpRestaurantMenu />,
+        prefix: "menu",
+      },
+      {
+        id: "package",
+        title: t("package"),
+        icon: <HugeiconsPackage />,
+        prefix: "package",
+      },
+      {
+        id: "poster",
+        title: t("poster"),
+        icon: <GameIconsTargetPoster />,
+        prefix: "poster",
+      },
+    ]
 
   return (
     <div className="flex flex-col items-center justify-center    ">
       {/* <TitleHeader title={"mywork.pagetitle"} /> */}
       <div className="flex flex-row flex-wrap  gap-10 p-10 items-center justify-center   w-full  ">
-        {data?.data?.map((el) => {
+        {data.map((el) => {
           const titleUrl = convertToSlug(el.title);
           return (
             <Link
-              href={`/worksample/${titleUrl}?prefix=${el.prefix}`}
+              href={`/${params.locale}/worksample/${titleUrl}?prefix=${el.prefix}`}
               prefetch={false}
               className="relative flex  items-center justify-center bg-secondary w-[200px] h-[120px] rounded-lg flex-col   hover:bg-primary/30 cursor-pointer border border-border "
               key={el.id}
@@ -49,93 +133,7 @@ async function page() {
 }
 export default page;
 
-export function myWork2Data() {
-  return {
-    data: [
-      {
-        id: "sm",
-        title: "data smMenuTilte",
-        icon: <SimpleIconsDm />,
-        prefix: "sm",
-      },
-      {
-        id: "uiux",
-        title: "data uiUxMenuTitle",
-        icon: <SimpleIconsNextui />,
-        prefix: "ui",
-      },
-      {
-        id: "identity",
-        title: "data.identityMenuTitle",
-        icon: <GuidanceVisualImpairment />,
-        prefix: "Identity",
-      },
 
-      {
-        id: "signboard",
-        title: "data.singBoardMEnuTitle",
-        icon: <TeenyiconsSignOutline />,
-        prefix: "sinboard",
-      },
-      {
-        id: "cnc",
-        title: "data.cncMenuTitle",
-        icon: <GameIconsCircularSawblade />,
-        prefix: "cnc",
-        taskCounter: 5,
-      },
-      {
-        id: "Character",
-        title: "data.Character",
-        icon: <GameIconsCharcuterie />,
-        prefix: "character",
-      },
-      {
-        id: "Coverpage",
-        title: "data.Coverpage",
-        icon: <GisLandcoverMap />,
-        prefix: "coverage",
-      },
-      {
-        id: "Logo",
-        title: "data.Logo",
-        icon: <FluentMdl2PythonLogoYellow />,
-        prefix: "logo",
-      },
-      {
-        id: "flyer",
-        title: "data.flyer",
-        icon: <CodiconFileMedia />,
-
-        prefix: "flyer",
-      },
-      {
-        id: "infograph",
-        title: "data.infograph",
-        icon: <TablerChartInfographic />,
-        prefix: "infograph",
-      },
-      {
-        id: "menu",
-        title: "data.menu",
-        icon: <IcSharpRestaurantMenu />,
-        prefix: "menu",
-      },
-      {
-        id: "package",
-        title: "data.package",
-        icon: <HugeiconsPackage />,
-        prefix: "package",
-      },
-      {
-        id: "poster",
-        title: "data.poster",
-        icon: <GameIconsTargetPoster />,
-        prefix: "poster",
-      },
-    ],
-  };
-}
 
 const TitleHeader = ({ title }: { title: string }) => {
   return (
