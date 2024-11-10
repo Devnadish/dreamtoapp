@@ -2,6 +2,8 @@ import React from "react"; // Import React to avoid UMD global error
 import dynamic from "next/dynamic"; // Import dynamic for code splitting
 import Logo from "@/components/header/Logo";
 import Link from "next/link";
+import AnimatedModal from "./AnimatedModal";
+import AnimatedBorderTrail from "./AnimatedBorderTrail";
 
 // Dynamically import components to reduce initial bundle size
 const DynamicHoverServiceMenu = dynamic(() => import("./HoverServiceMenu"));
@@ -19,6 +21,7 @@ const HeaderBar = React.memo(({ locale }: { locale: string }) => {
         <DynamicHoverServiceMenu />
         <DynamicHoverFreeMenu />
         <DynamicBuregerMenu />
+        
       </>
       {/* <Link href={`/${locale}/worksample`} className="text-foreground">
         W

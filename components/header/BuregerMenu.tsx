@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import React from "react";
 import { DollarSign, Briefcase, Book, HelpCircle, MessageCircle } from "lucide-react";
+import AnimatedModal from "../AnimatedModal";
 
 export default function BuregerMenu() {
   const t = useTranslations("MenuItems");
@@ -39,9 +40,9 @@ export default function BuregerMenu() {
           <MenuItems />
         </div>
         <SheetFooter className="w-full justify-center items-center">
-          <button className="w-full py-2 px-4 bg-primary text-white rounded hover:bg-primary/90 transition duration-300 ease-in-out  font-cairo ">
-            {t("collectPrize")}
-          </button>
+         
+          {/* <WorkButton text={t("collectPrize")}/> */}
+          <AnimatedModal />
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -82,3 +83,13 @@ const MenuItems = React.memo(() => {
     </div>
   );
 });
+
+
+   function WorkButton({text}:{text:string}) {
+  return (
+    <button className="group relative overflow-hidden rounded-xl bg-primary px-10 py-4 text-lg transition-all w-full">
+      <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
+      <span className="font-semibold text-purple-200">{text}</span>
+    </button>
+  );
+}

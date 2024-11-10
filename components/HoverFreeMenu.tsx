@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/hover-card"
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import AnimatedBorderTrail from "./AnimatedBorderTrail";
 
 function HoverFreeMenu() {
   const t = useTranslations("HomePage");
@@ -66,7 +67,11 @@ function HoverFreeMenu() {
 
   return (
     <HoverCard  openDelay={100} closeDelay={100}   >
-  <HoverCardTrigger className="font-bold font-cairo ">{t("free")}</HoverCardTrigger>
+      <AnimatedBorderTrail trailSize="lg" duration={"7s"}  trailColor="orange" className="w-[100px] flex items-center justify-center ">
+       
+       
+  <HoverCardTrigger className="font-bold font-cairo flex p-1 items-center justify-center text-center w-full">{t("free")}</HoverCardTrigger>
+   </AnimatedBorderTrail>
   <HoverCardContent className="w-full"   >
     <div className="grid grid-cols-2  w-full max-w-[340px]">
     {data.map((item) => (

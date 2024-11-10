@@ -77,10 +77,15 @@ const config: Config = {
             height: "0",
           },
         },
+         "trail": {
+          "0%": { "--angle": "0deg" },
+          "100%": { "--angle": "360deg" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+         "trail": "trail var(--duration) linear infinite",
       },
       backgroundImage: {
         "gradient-custom":
@@ -94,6 +99,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography"),require("tailwindcss-animate")],
 };
 export default config;
