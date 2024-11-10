@@ -61,9 +61,9 @@ const PostCard = React.memo(({ post }: { post: Post}) => {
           </div>
         )}
       </CardContent>
-      <CardFooter className="flex flex-row items-center w-full justify-between">
+      <CardFooter className="flex flex-row items-center w-full justify-between ">
         <Link
-          className="bg-secondary font-cairo font-[400] text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
+          className="bg-secondary font-cairo font-[600] text-foreground hover:bg-primary/80 transition duration-200 rounded-full px-4 py-2 text-sm"
           href={`/${locale}/showdetail/${post.slug?.current}`}
         >
           {t("details")}

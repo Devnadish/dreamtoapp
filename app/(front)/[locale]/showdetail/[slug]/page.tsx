@@ -11,7 +11,7 @@ export default async function Page({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = await getPost(slug);
+  const post = await getPost(slug, locale );
   if (!post) {
     return notFound();
   }

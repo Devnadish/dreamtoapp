@@ -1,11 +1,13 @@
 import React from "react";
 
-export function FluentColorHome48(props) {
+interface HomeIconProps extends React.SVGProps<SVGSVGElement> {}
+
+export function FluentColorHome48(props: HomeIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={74}
-      height={74}
+      width={48}
+      height={48}
       viewBox="0 0 48 48"
       {...props}
     >

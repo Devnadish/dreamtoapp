@@ -15,7 +15,6 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages,getLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import { getLangDir } from "rtl-detect";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { routing } from "@/i18n/routing";
 
 
@@ -85,15 +84,14 @@ console.log(direction)
           )}
 
           <ThemeProvider>
+            <NextIntlClientProvider messages={messages}>
             <HeaderBar locale={locale} />
-             <LanguageSwitcher locale={locale} />
 
             <BodyContainer>
-            <NextIntlClientProvider messages={messages}>
               {children}
-          </NextIntlClientProvider>
               </BodyContainer>
             <SideMenu />
+          </NextIntlClientProvider>
           </ThemeProvider>
           <SanityLive />
         </body>

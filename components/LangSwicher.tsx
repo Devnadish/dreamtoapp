@@ -8,6 +8,7 @@ import english from "@/public/locales/english.png";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function LangSwicher() {
   const locale = useLocale();
@@ -45,7 +46,7 @@ export default function LangSwicher() {
   }
 
   return (
-    <div className="cursor-pointer" onClick={toggleLanguage}> 
+    <motion.button className="cursor-pointer w-[24px] h-[24px] text-foreground/50" onClick={toggleLanguage}> 
       <Image
         src={locale === "ar" ? arabic : english}
         width={24}
@@ -54,7 +55,7 @@ export default function LangSwicher() {
         alt="Loading Light/Dark Toggle"
         priority={false}
       />
-    </div>
+    </motion.button>
   );
 }
   

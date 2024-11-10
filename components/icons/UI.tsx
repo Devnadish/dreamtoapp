@@ -1,21 +1,13 @@
 import React from "react";
 
+
 export function SimpleIconsNextui(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={64}
-      height={64}
-      viewBox="0 0 24 24"
-      {...props}
-    >
-      <path
-        fill="currentColor"
-        d="M6.353 0h11.294A6.353 6.353 0 0 1 24 6.353v11.294A6.353 6.353 0 0 1 17.647 24H6.353A6.353 6.353 0 0 1 0 17.647V6.353A6.353 6.353 0 0 1 6.353 0m7.755 6.913h-.933v6.702a2.9 2.9 0 0 1-.362 1.45c-.24.424-.596.77-1.025 1q-.664.366-1.553.365q-.888 0-1.55-.364a2.6 2.6 0 0 1-1.024-1a2.87 2.87 0 0 1-.365-1.45V6.912h-.933v6.767a3.56 3.56 0 0 0 .489 1.862c.327.547.798.994 1.362 1.292q.873.474 2.021.474q1.154 0 2.024-.471a3.47 3.47 0 0 0 1.36-1.293c.33-.565.5-1.21.49-1.864zm3.648 10.22V6.914h-.933v10.22h.933Z"
-      ></path>
-    </svg>
-  );
+	return (<svg xmlns="http://www.w3.org/2000/svg" width={64} height={64} viewBox="0 0 32 32" {...props}><circle cx={20} cy={8} r={1} fill="black"></circle><circle cx={23} cy={8} r={1} fill="black"></circle><circle cx={26} cy={8} r={1} fill="black"></circle><path fill="black" d="M28 4H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 2v4H4V6ZM4 12h6v14H4Zm8 14V12h16v14Z"></path></svg>);
 }
+
+
+
+ 
 
 export function SolarFigmaBold(props: React.SVGProps<SVGSVGElement>) {
   return (

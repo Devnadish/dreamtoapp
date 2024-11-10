@@ -30,26 +30,67 @@
       "poster": "Poster",
       "pagetitle": "At Dream to App, we specialize in delivering exceptional web and mobile solutions tailored to your unique needs. Our skilled team combines cutting-edge technology with innovative design and visual identity to create user-friendly applications that enhance both functionality and user experience. We prioritize UI/UX principles to ensure every interaction is intuitive and engaging. With a strong commitment to quality and professionalism, we execute each project with efficiency and attention to detail. Partner with Dream to App to experience the difference that true expertise can make in your digital journey."
     },
+    
+ "services": {
+        "mobileApp": "Mobile App Development",
+        "mobileAppTitle": "Custom apps for a seamless user experience.",
 
+        "webApp": "Web App Development",
+        "webAppTitle": "Interactive web apps providing dynamic functionality.",
 
+        "ecommerce": "E-commerce Solutions",
+        "ecommerceTitle": "Online stores that simplify buying and selling.",
 
-  "loginBar": {
+        "design": "User Interface Design",
+        "designTitle": "Visually appealing and user-friendly interfaces.",
+
+        "digitalMarketing": "Digital Marketing",
+        "digitalMarketingTitle": "Promoting products through digital channels.",
+
+        "emailMarketing": "Email Marketing",
+        "emailMarketingTitle": "Targeted emails to boost engagement."
+      },
+"Free": {
+        "consultation": "Consultation",
+        "consultationTitle": "Get expert advice on web design and development at no cost!",
+
+        "evaluation": "Free Evaluation", 
+        "evaluationTitle": "Free Evaluation for your digital projects!",
+
+        "idea": "Free Idea",
+        "ideaTitle": "Explore innovative ideas for your digital solutions without cost.",
+
+        "marketingIdea": "Marketing Idea",
+        "marketingIdeaTitle": "Customized marketing strategies tailored to your needs.",
+
+        "firstPurchaseDiscount": "First Purchase Discount",
+        "firstPurchaseDiscountTitle": "Enjoy a 20% discount on your first purchase!",
+
+        "referralProgram": "Referral Program",
+        "referralProgramTitle": "Refer a friend and both earn $10 towards your next purchase!",
+
+        "personalizedConsultation": "Personalized Consultation",
+        "personalizedConsultationTitle": "Book a 30-minute free consultation tailored to your goals!",
+
+        "membershipBenefits": "Membership Benefits",
+        "membershipBenefitsTitle": "Join us for exclusive discounts and valuable resources!"
+      },
+
+  "login": {
     "login": "Login",
     "register": "register",
     "loginHint": "Login please"
   },
 
-  "navigation": {
-    "menu": "Menu",
-    "home": "Home",
+  "MenuItems": {
+    "welcomeMsg": "Welcome!..Excited To Serve You",
+    "welcomeDesction": " Welcome! I'm here to assist you with all your needs, from answering   questions to providing insights. Let’s explore new ideas together!",
     "price": "Prices",
     "sample": "Portfolio",
     "blog": "Blog",
-    "serves": "service",
-    "contact": "contact",
-    "whatapp": "Whatsapp",
-    "sheetTilte": "Excited To Serve You",
-    "sheetDesction": " Welcome! I'm here to assist you with all your needs, from answering   questions to providing insights. Let’s explore new ideas together!"
+    "faq": "FAQ",
+    "contactUs": "Contact Us",
+    "collectPrize": "Collect Your Prize"
   },
   "page": {
     "about": {
@@ -109,21 +150,22 @@
 
       "services": {
         "mobileApp": "Mobile App Development",
-        "mobileAppTitle": "Creating applications specifically for mobile devices, ensuring a seamless user experience on smartphones and tablets.",
+        "mobileAppTitle": "Custom apps for a seamless user experience.",
 
-        "webApp": "Web Application Development",
-        "webAppTitle": "Building responsive and interactive web applications that run in web browsers, providing users with dynamic functionality.",
+        "webApp": "Web App Development",
+        "webAppTitle": "Interactive web apps providing dynamic functionality.",
 
         "ecommerce": "E-commerce Solutions",
-        "ecommerceTitle": "Developing online stores and platforms that facilitate buying and selling products or services over the internet.",
+        "ecommerceTitle": "Online stores that simplify buying and selling.",
 
-        "design": "UI/UX Design",
-        "designTitle": "Creating user interfaces and experiences that are visually appealing and user-friendly, enhancing overall satisfaction.",
+        "design": "User Interface Design",
+        "designTitle": "Visually appealing and user-friendly interfaces.",
 
         "digitalMarketing": "Digital Marketing",
-        "digitalMarketingTitle": "Promoting products or services through digital channels to reach a wider audience and drive engagement.",
+        "digitalMarketingTitle": "Promoting products through digital channels.",
+
         "emailMarketing": "Email Marketing",
-        "emailMarketingTitle": "Sending targeted emails to nurture leads and communicate with customers, enhancing engagement and retention."
+        "emailMarketingTitle": "Targeted emails to boost engagement."
       }
     },
 

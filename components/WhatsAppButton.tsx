@@ -18,7 +18,7 @@ export const WhatsAppButton: React.FC<{   title: string }> = ({  title }) => {
   return (
     <button
       onClick={handleClick}
-      className="  rounded-full size-10 w-fit hover:bg-white/80 flex items-center justify-center   flex-row gap-2 p-2"
+      className="  rounded-full   w-fit hover:bg-white/80 flex items-center justify-center   flex-row p-1"
       aria-label="WhatsApp"
     >
       <div className="animate-pulse">
@@ -40,10 +40,10 @@ export const HomePage: React.FC<{  title: string }> = ({  title }) => {
   return (
     <button
       onClick={handleClick}
-      className="  rounded-full size-12  hover:bg-white/80 flex items-center justify-center flex-col "
+      className="  rounded-full w-fit  hover:bg-white/80 flex items-center justify-center flex-col p-1"
       aria-label="home"
     >
-      <FluentColorHome48 />
+      <FluentColorHome48 width={38} height={38} />
       <span className="text-xs">{title}</span>
     </button>
   );
@@ -58,7 +58,7 @@ export const ContactUs: React.FC<{  title: string }> = ({  title }) => {
   return (
     <button
       onClick={handleClick}
-      className="  rounded-full size-10 w-fit hover:text-black hover:bg-white/80 flex items-center justify-center   flex-row gap-2 p-2"
+      className="  rounded-full   w-fit hover:text-black hover:bg-white/80 flex items-center justify-center   flex-row  p-1"
       aria-label={title}
     >
       <MingcuteSendFill width={38} height={38} />

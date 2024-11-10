@@ -1,10 +1,10 @@
 import { sanityFetch } from "../live";
 import { defineQuery } from "next-sanity";
 
-export const getData = async (departmentType: string) => {
+export const getData = async (departmentType: string, locale: string) => {
   const ALL_DATA = defineQuery(
     `
-   *[_type=="post" && references(*[_type=="department" && title == $departmentType]._id)]
+   *[_type=="${locale === "ar" ? "arabicPost" : "post"}" && references(*[_type=="department" && title == $departmentType]._id)]
    `
   );
 
@@ -21,10 +21,10 @@ const fetchData = async (query: any, params: any) => {
   }
 };
 
-export const getPost = async (slug: string) => {
+export const getPost = async (slug : string, locale: string) => {
   const POST_BY_SLUG = defineQuery(
     `
-    *[_type=="post" && slug.current == $slug][0]
+    *[_type=="${locale === "ar" ? "arabicPost" : "post"}" && slug.current == $slug][0]
     `
   );
 

@@ -37,14 +37,15 @@ const LoadingSection = () => (
   <div className="w-full h-48 animate-pulse bg-gray-200 dark:bg-gray-800 rounded-lg" />
 );
 
-export default async function Home() {
+export default async function Home({params}:{params:{locale:string}}) {
  const t = await getTranslations('HomePage');
+  const { locale } = await params;
   // Parallel data fetching with error handling
   const [services, experts, support, provide] = await Promise.all([
-    getData("Service").catch(() => []),
-    getData("Experts").catch(() => []),
-    getData("Support").catch(() => []),
-    getData("Provide").catch(() => []),
+    getData("Service", locale).catch(() => []),
+    getData("Experts", locale).catch(() => []),
+    getData("Support", locale).catch(() => []),
+    getData("Provide", locale).catch(() => []),
   ]);
 
   const sections = [
