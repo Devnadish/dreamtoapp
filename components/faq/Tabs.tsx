@@ -14,15 +14,15 @@ export async function QuestionTabs({answeredQuestions, pendingQuestions}: {answe
     <Tabs defaultValue="answered" className="w-full">
       <TabsList className="grid w-full grid-cols-3 gap-2">
         <TabsTrigger value="answered" className="relative font-cairo text-sm"><p className="text-sm">
-            <span className="absolute -top-2 left-0 bg-green-500 text-white px-2 rounded-full text-xs">{answeredQuestions.length}</span>
+            <span className="absolute -top-3 left-0 bg-green-500 text-white px-2 rounded-full text-xs">{answeredQuestions.length}</span>
             {t("Faq.answered")}
             </p></TabsTrigger>
           <TabsTrigger value="pending" className="relative font-cairo text-sm"><p className="text-sm">
-            <span className="absolute -top-2 left-0 bg-yellow-500 text-white px-2 rounded-full text-xs">{pendingQuestions.length}</span>
+            <span className="absolute -top-3 left-0 bg-yellow-500 text-white px-2 rounded-full text-xs">{pendingQuestions.length}</span>
             {t("Faq.pending")}
             </p></TabsTrigger>
         <TabsTrigger value="reported" className="relative font-cairo text-sm"><p className="text-sm">
-            <span className="absolute -top-2 left-0 bg-red-500 text-white px-2 rounded-full text-xs">{0}</span>
+            <span className="absolute -top-3 left-0 bg-red-500 text-white px-2 rounded-full text-xs">{0}</span>
             {t("Faq.rejected")}
             </p></TabsTrigger>
       </TabsList>
