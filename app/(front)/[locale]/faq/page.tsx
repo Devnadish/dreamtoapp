@@ -10,10 +10,10 @@ export default async function FAQ() {
     return (
         <div className="p-4">
             <div className="flex flex-row justify-between items-center mb-4">
-<h1 className="text-2xl font-bold font-cairo">{t("Faq.pagetitle")}</h1>
+<h1 className="text-2xl font-bold font-cairo ">{t("Faq.pagetitle")}</h1>
             <AddFaq />
             </div>
-            <h3 className="text-sm text-muted-foreground   font-cairo">{t("Faq.notPerfect")}</h3>
+            <h3 className="text-sm text-muted-foreground   font-cairo mb-4">{t("Faq.notPerfect")}</h3>
             
             <QuestionTabs answeredQuestions={answeredQuestions} pendingQuestions={pendingQuestions}/>
 
