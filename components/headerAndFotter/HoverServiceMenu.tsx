@@ -5,12 +5,12 @@ import {
 } from "@/components/ui/hover-card"
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { MdiEmailSealOutline } from "./icons/EmailMarkting";
-import { SimpleIconsDm } from "./icons/Dm";
-import { SimpleIconsNextui } from "./icons/UI";
-import { MageShop } from "./icons/Ecomm";
-import { CarbonApplicationWeb } from "./icons/WebApp";
-import { CarbonApplicationMobile } from "./icons/MobileApp";
+import { MdiEmailSealOutline } from "@/components/icons/EmailMarkting";
+import { SimpleIconsDm } from "@/components/icons/Dm";
+import { SimpleIconsNextui } from "@/components/icons/UI";
+import { MageShop } from "@/components/icons/Ecomm";
+import { CarbonApplicationWeb } from "@/components/icons/WebApp";
+import { CarbonApplicationMobile } from "@/components/icons/MobileApp";
 
 
 function HoverServiceMenu() {

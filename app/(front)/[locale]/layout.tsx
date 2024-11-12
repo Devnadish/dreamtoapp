@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import  "@/styles/globals.css";
-import SideMenu from "@/components/SideMenu";
-import HeaderBar from "@/components/HeaderBar";
+import SideMenu from "@/components/headerAndFotter/SideMenu";
+import HeaderBar from "@/components/headerAndFotter/HeaderBar";
 import { SanityLive } from "@/sanity/lib/live";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
@@ -16,6 +16,9 @@ import {getMessages,getLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import { getLangDir } from "rtl-detect";
 import { routing } from "@/i18n/routing";
+import { Toaster } from "@/components/ui/toaster"
+
+
 
 
 
@@ -57,10 +60,10 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const direction = getLangDir(locale);
 
-console.log(direction)
-
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
+    console.log("Locale not found:", locale);
+    console.log("Available locales:", routing.locales);
     notFound();
   }
 
@@ -94,6 +97,7 @@ console.log(direction)
           </NextIntlClientProvider>
           </ThemeProvider>
           <SanityLive />
+         <Toaster />
         </body>
       </html>
   );

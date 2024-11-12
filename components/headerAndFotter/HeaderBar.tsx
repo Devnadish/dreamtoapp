@@ -1,14 +1,14 @@
 import React from "react"; // Import React to avoid UMD global error
 import dynamic from "next/dynamic"; // Import dynamic for code splitting
-import Logo from "@/components/header/Logo";
+import Logo from "@/components/headerAndFotter/Logo";
 import Link from "next/link";
-import AnimatedModal from "./AnimatedModal";
-import AnimatedBorderTrail from "./AnimatedBorderTrail";
+import AnimatedModal from "../AnimatedModal";
+import AnimatedBorderTrail from "../AnimatedBorderTrail";
 
 // Dynamically import components to reduce initial bundle size
 const DynamicHoverServiceMenu = dynamic(() => import("./HoverServiceMenu"));
 const DynamicHoverFreeMenu = dynamic(() => import("./HoverFreeMenu"));
-const DynamicBuregerMenu = dynamic(() => import("@/components/header/BuregerMenu"));
+const DynamicBuregerMenu = dynamic(() => import("@/components/headerAndFotter/BuregerMenu"));
 
 const HeaderBar = React.memo(({ locale }: { locale: string }) => {
 

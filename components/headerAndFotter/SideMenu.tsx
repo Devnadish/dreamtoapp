@@ -4,9 +4,9 @@ import {
   HomePage,
   ContactUs,
   WhatsAppButton,
-} from "@/components/WhatsAppButton";
+} from "@/components/headerAndFotter/WhatsAppButton";
 import { motion } from "framer-motion";
-import BackButton from "./ui/BackButton";
+import BackButton from "../ui/BackButton";
 import ToggleVisibilityButton from "./ToggleVisibilityButton";
 
 export default function SideMenu() {

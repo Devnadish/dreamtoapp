@@ -4,7 +4,7 @@ import { Post } from "@/sanity.types";
 import SectionTitle from "./SectionTitle";
 import React, { useState, memo } from "react"; // Import memo for performance optimization
 import PostList from "./PostList";
-import ExpandButton from "@/components/ExpandButton";
+import ExpandButton from "@/components/post/ExpandButton";
 import { SectionViewProps } from "@/constant/type";
 
  

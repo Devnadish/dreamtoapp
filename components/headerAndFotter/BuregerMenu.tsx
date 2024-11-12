@@ -6,6 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose
 } from "@/components/ui/sheet";
 
 import { useLocale, useTranslations } from "next-intl";
@@ -66,19 +67,22 @@ const MenuItems = React.memo(() => {
   // Define menu items with their corresponding icons
   const menuItems = [
     { href: `/${locale}/prices`, label: t("price"), icon: <DollarSign size={20} className="text-primary" /> },
-    { href: `/${locale}/portfolio`, label: t("sample"), icon: <Briefcase size={20} className="text-primary" /> },
+    { href: `/${locale}/worksample`, label: t("sample"), icon: <Briefcase size={20} className="text-primary" /> },
     { href: `/${locale}/blog`, label: t("blog"), icon: <Book size={20} className="text-primary" /> },
     { href: `/${locale}/faq`, label: t("faq"), icon: <HelpCircle size={20} className="text-primary" /> },
-    { href: `/${locale}/contactUs`, label: t("contactUs"), icon: <MessageCircle size={20} className="text-primary" /> },
+    { href: `/${locale}/contactus`, label: t("contactUs"), icon: <MessageCircle size={20} className="text-primary" /> },
   ];
 
   return (
     <div className="w-full flex flex-col items-start justify-center gap-4">
       {menuItems.map((item) => (
-        <Link key={item.label} href={item.href} className="text-pretty hover:text-primary hover:bg-primary/10 rounded-md p-2 flex items-center gap-2 transition-all duration-300 ease-in-out w-full font-cairo font-semibold">
+      <SheetClose asChild key={item.label}>
+       
+        <Link  href={item.href} className="text-pretty hover:text-primary hover:bg-primary/10 rounded-md p-2 flex items-center gap-2 transition-all duration-300 ease-in-out w-full font-cairo font-semibold" >
           {item.icon}
           {item.label}
         </Link>
+          </SheetClose>
       ))}
     </div>
   );

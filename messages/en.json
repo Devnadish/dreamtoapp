@@ -92,6 +92,17 @@
     "contactUs": "Contact Us",
     "collectPrize": "Collect Your Prize"
   },
+
+  "Faq": {
+    "pending": "Pending",
+    "answered": "Answered",
+    "rejected": "Rejected",
+    "pagetitle": "FAQ",
+    "notPerfect": "We are Not Perfect, But We are Working on it for you to be Perfect"
+    
+  },
+
+
   "page": {
     "about": {
       "homePage": {

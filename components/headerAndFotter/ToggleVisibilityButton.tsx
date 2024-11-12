@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
-import ThemeSwitch from "./ThemeSwitch";
 import LangSwicher from "./LangSwicher";
+import ThemeSwitch from "./ThemeSwitch";
 
 export default function ToggleVisibilityButton({ onClick, isVisible }: { onClick: () => void, isVisible: boolean }) {
   return (
