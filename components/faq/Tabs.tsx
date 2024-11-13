@@ -1,15 +1,17 @@
-
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { Check } from "lucide-react"
+import { Check, User } from "lucide-react"
 import { getTranslations } from "next-intl/server";
-
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { getTimeElapsed } from "@/lib/nadish";
 export async function QuestionTabs({answeredQuestions, pendingQuestions}: {answeredQuestions: any[], pendingQuestions: any[]}) {
   const t = await getTranslations();
+ 
+  
   return (
     <Tabs defaultValue="answered" className="w-full">
       <TabsList className="grid w-full grid-cols-3 gap-2">
@@ -47,6 +49,8 @@ const RejectedQuestions = ( ) => <TabsContent value="reported">
 const PendingQuestions = ({pendingQuestions}: {pendingQuestions: any[]}) => <TabsContent value="pending">
         {pendingQuestions.map((item) => (
             <div key={item.id} className="mb-4 border p-4 rounded-lg shadow-md">
+                <Qinfo userName={item.userName} userEmail={item.userEmail} userImage={item.userImage} 
+              createdAt={getTimeElapsed(item.createdAt)} />
                 <h1 className="text-lg  font-cairo">{item.question}</h1>
             </div>
         ))}
@@ -54,6 +58,8 @@ const PendingQuestions = ({pendingQuestions}: {pendingQuestions: any[]}) => <Tab
 const AnsweredQuestions = ({answeredQuestions}: {answeredQuestions: any[]}) => <TabsContent value="answered">
         {answeredQuestions.map((item) => (
             <div key={item.id} className="mb-4 border p-4 rounded-lg shadow-md">
+              <Qinfo userName={item.userName} userEmail={item.userEmail} userImage={item.userImage} 
+              createdAt={getTimeElapsed(item.createdAt)} />
                 <h1 className="text-xl font-bold">{item.question}</h1>
                 <div className="mt-2 space-y-2">
                     {item.answers.map((answer: any, index: number) => (
@@ -67,3 +73,21 @@ const AnsweredQuestions = ({answeredQuestions}: {answeredQuestions: any[]}) => <
         ))}
       </TabsContent>
 
+
+const Qinfo =({userName,  userImage,createdAt}: {userName: string, userEmail: string, userImage: string | undefined,createdAt: string})=>{
+  return <div className="flex items-center">
+    <Avatar>
+       
+        <AvatarImage src={userImage} className="w-8 h-8" />
+        <AvatarFallback className="w-8 h-8">
+          <p className="text-gray-500">{userName ? userName.charAt(0).toUpperCase() : "A"}</p>
+        </AvatarFallback> 
+    </Avatar>
+    <div className="flex flex-row gap-2 items-center text-xs text-muted-foreground w-full justify-between font-light">
+      <p>{userName || "Anonymous"} </p>
+      <p>{createdAt || "Unknown"} </p>
+    </div>
+  </div>
+}
+
+ 

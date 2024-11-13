@@ -1,7 +1,7 @@
 "use server"
 import db from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-export async function submitFaq(question: string) {
+export async function submitFaq(question: string, userName: string, userEmail: string, userImage: string | undefined) {
     const slug = question.toLowerCase().replace(/\s+/g, '-');
 
     const check = await db.FAQ.findFirst({where:{slug:slug}});
@@ -12,10 +12,12 @@ export async function submitFaq(question: string) {
     const res = await db.FAQ.create({
         data: {
             question: question,
-            slug: slug
+            slug: slug,
+            userName: userName,
+            userEmail: userEmail,
+            userImage: userImage
         },
     });
     revalidatePath("/faq");
-    console.log(res);
     return res;
 }

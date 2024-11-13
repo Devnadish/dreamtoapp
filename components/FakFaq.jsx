@@ -5,7 +5,6 @@ import { CreateFakeData } from '@/actions/createFakeFaq';
 function FakFaq() {
  const handleCreateFakeData = async () => {
     const data = await CreateFakeData();
-    console.log('Fake data created:', data);
   };
 
   return (

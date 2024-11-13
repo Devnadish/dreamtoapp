@@ -17,6 +17,7 @@ import {notFound} from 'next/navigation';
 import { getLangDir } from "rtl-detect";
 import { routing } from "@/i18n/routing";
 import { Toaster } from "@/components/ui/toaster"
+import { ClerkProvider } from '@clerk/nextjs'
 
 
 
@@ -62,8 +63,6 @@ export default async function LocaleLayout({
 
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
-    console.log("Locale not found:", locale);
-    console.log("Available locales:", routing.locales);
     notFound();
   }
 
@@ -75,10 +74,13 @@ export default async function LocaleLayout({
 
 
   return (
+    <ClerkProvider> 
       <html  lang={locale} dir={direction}  suppressHydrationWarning>
         <body
           className={`${outfit.variable} ${geistMono.variable} ${amiri.variable} ${cairo.variable} antialiased`}
         >
+           
+
           {(await draftMode()).isEnabled && (
             <div className="hidden sm:block">
               <DisableDraftMode />
@@ -91,6 +93,7 @@ export default async function LocaleLayout({
             <HeaderBar locale={locale} />
 
             <BodyContainer>
+             
               {children}
               </BodyContainer>
             <SideMenu />
@@ -100,5 +103,6 @@ export default async function LocaleLayout({
          <Toaster />
         </body>
       </html>
+    </ClerkProvider>
   );
 }

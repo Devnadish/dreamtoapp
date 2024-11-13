@@ -4,6 +4,7 @@ import Logo from "@/components/headerAndFotter/Logo";
 import Link from "next/link";
 import AnimatedModal from "../AnimatedModal";
 import AnimatedBorderTrail from "../AnimatedBorderTrail";
+import AuthButton from "./AuthButton";
 
 // Dynamically import components to reduce initial bundle size
 const DynamicHoverServiceMenu = dynamic(() => import("./HoverServiceMenu"));
@@ -21,6 +22,7 @@ const HeaderBar = React.memo(({ locale }: { locale: string }) => {
         <DynamicHoverServiceMenu />
         <DynamicHoverFreeMenu />
         <DynamicBuregerMenu />
+        <AuthButton />
         
       </>
       {/* <Link href={`/${locale}/worksample`} className="text-foreground">

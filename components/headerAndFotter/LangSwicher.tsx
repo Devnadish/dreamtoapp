@@ -1,8 +1,6 @@
 "use client";
 
-import { Sun, MoonStar } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import arabic from "@/public/locales/arabic.png";
 import english from "@/public/locales/english.png";
 import Image from "next/image";
@@ -13,20 +11,16 @@ import { motion } from "framer-motion";
 export default function LangSwicher() {
   const locale = useLocale();
   const [mounted, setMounted] = useState(false);
-  const [lang, setLang] = useState("ar");
+  const [lang, setLang] = useState(locale || "ar");
   const router = useRouter();
   const pathname = usePathname();
-
-
-
-
 
   useEffect(() => setMounted(true), []);
   useEffect(() => setLang(locale || "ar"), [locale]);
 
   const toggleLanguage = () => {
     setLang((prevLang) => (prevLang === "ar" ? "en" : "ar"));
-     const newLocale = lang === "ar" ? "en" : "ar";
+    const newLocale = lang === "ar" ? "en" : "ar";
     const path = pathname.split("/").slice(2).join("/");
     router.push(`/${newLocale}/${path}`);
   };

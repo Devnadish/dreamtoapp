@@ -15,7 +15,6 @@ export default async function Page({
   if (!post) {
     return notFound();
   }
-  console.log(locale);
   return (
     <div className="max-w-4xl mx-auto p-6 flex flex-col gap-6 items-center justify-center bg-background dark:bg-background-dark">
       <div className="w-full flex flex-row items-center justify-between">

@@ -23,7 +23,6 @@ export const metadata = {
 };
 
 async function page({params}:{params:{locale:string}}) {
-  console.log(params.locale)
   const t = await getTranslations("workSample");
   const data= [
       {

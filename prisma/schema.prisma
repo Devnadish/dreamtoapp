@@ -11,6 +11,9 @@ model FAQ {
   slug         String   @unique
   question     String   @default("")
   userid       String   @default("")
+  userName     String   @default("")
+  userEmail    String   @default("")
+  userImage    String   @default("")
   viewerCount  Int      @default(0)
   isShow       Boolean   @default(true)
   createdAt    DateTime @default(now())
