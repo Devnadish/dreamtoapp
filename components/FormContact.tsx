@@ -1,131 +1,148 @@
 "use client";
-import React, { useState } from "react";
+import React, { useActionState, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-export default function FormContact({ lang  }: { lang: string }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+import { useTranslations } from "next-intl";
+import { submitContact } from "@/actions/constactus/submitContact";
+import { SendingToserver } from "./Loader";
+import { NotifyMsg } from "./NotifyMsg";
+export default function FormContact({
+  lang,
+  user,
+}: {
+  lang: string;
+  user: any;
+}) {
+  const t = useTranslations("contactus");
+  const [state, formAction, isPending] = useActionState(submitContact, null);
+  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [open, setOpen] = useState(false);
+  const savedRef = React.useRef();
   const formSchema = z.object({
-    mobile: z.string().regex(/^[0-9]{10}$/, "translation.mobileValidationError"),
-    email: z.string().email("translation.emailValidationError"),
-    message: z.string().min(10, "translation.msgValidationError"),
+    mobile: z.string().regex(/^[0-9]{10}$/, t("mobileValidationError")),
+    email: z.string().email(t("emailValidationError")),
+    message: z.string().min(10, t("msgValidationError")),
   });
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      mobile: "",
-      email: "",
-      message: "",
-    },
-  });
+  // function validate() {
+  //   try {
+  //     const formData = { mobile, email, message };
+  //     formSchema.parse(formData);
+  //     return true;
+  //   } catch (err) {
+  //     if (err instanceof z.ZodError) {
+  //       const fieldErrors = err.errors.reduce(
+  //         (acc, curr) => {
+  //           acc[curr.path[0]] = curr.message;
+  //           return acc;
+  //         },
+  //         {} as Record<string, string>
+  //       );
+  //     }
+  //     return false;
+  //   }
+  // }
 
-  function onSubmit() {
-    setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-       
-      form.reset();
-    }, 2000);
-  }
   return (
-    <Form {...form}>
+    <>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 sm:space-y-6"
+        action={formAction}
+        className="border border-orangeColor/50 p-4 rounded-lg gap-4 flex flex-col"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
+          <InputContact
             name="mobile"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-sm sm:text-base text-orangeColor">
-                  {/* {translation.mobile} */}
-                  Mobile
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="1234567890"
-                    {...field}
-                    className="text-sm sm:text-base text-foreground"
-                  />
-                </FormControl>
-                <FormDescription className="text-xs sm:text-sm ">
-                  {/* {translation.mobilePlaceHolder} */}
-                  Mobile Place Holder
-                </FormDescription>
-                <FormMessage className="text-xs sm:text-sm" />
-              </FormItem>
-            )}
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+            placeholder="1234567890"
+            className="text-sm sm:text-base text-foreground"
+            labelName={t("mobile")}
           />
-          <FormField
-            control={form.control}
+          <InputContact
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder={user.firstName}
+            className="text-sm sm:text-base text-foreground"
+            labelName={t("name")}
+          />
+          <InputContact
             name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-sm sm:text-base text-orangeColor">
-                  {/* {translation.email} */}
-                  Email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                      placeholder="example@example.com"
-                    {...field}
-                    className="text-sm sm:text-base text-foreground"
-                  />
-                </FormControl>
-                <FormMessage className="text-xs sm:text-sm" />
-              </FormItem>
-            )}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={user.email}
+            className="text-sm sm:text-base text-foreground"
+            labelName={t("email")}
           />
         </div>
 
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm sm:text-base text-orangeColor">
-                {/* {translation.msg} */}
-                Message
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Your Message"
-                  className="min-h-[100px] text-sm sm:text-base text-foreground"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage className="text-xs sm:text-sm" />
-            </FormItem>
-          )}
-        />
+        <div>
+          <label className="text-sm sm:text-base text-orangeColor font-cairo">
+            {t("msg")}
+          </label>
+          <Textarea
+            name="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder={t("msgplaceHolder")}
+            className="min-h-[100px] text-sm sm:text-base text-foreground"
+          />
+        </div>
         <Button
           type="submit"
           className="w-full text-sm sm:text-base py-2 sm:py-3 "
-          disabled={isSubmitting}
+          disabled={isPending}
         >
-          {isSubmitting
-            ? "sending..."
-              : "Send"
-            }
+          {isPending ? <SendingToserver /> : t("sendBtn")}
         </Button>
       </form>
-    </Form>
+      {state && (
+        <NotifyMsg
+          title={t("Done")}
+          msg={t("doneMsg")}
+          open={isPending}
+          onOpenChange={() => {
+            setOpen(false);
+          }}
+        />
+      )}
+    </>
   );
 }
+
+const InputContact = ({
+  name,
+  value,
+  onChange,
+  placeholder,
+  className,
+  labelName,
+}: {
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  className: string;
+  labelName: string;
+}) => {
+  return (
+    <div>
+      <label className="text-sm sm:text-base text-orangeColor font-cairo">
+        {labelName}
+      </label>
+      <Input
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={className}
+      />
+    </div>
+  );
+};

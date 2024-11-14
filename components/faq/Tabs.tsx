@@ -90,4 +90,3 @@ const Qinfo =({userName,  userImage,createdAt}: {userName: string, userEmail: st
   </div>
 }
 
- 

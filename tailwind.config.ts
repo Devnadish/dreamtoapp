@@ -77,7 +77,7 @@ const config: Config = {
             height: "0",
           },
         },
-         "trail": {
+        trail: {
           "0%": { "--angle": "0deg" },
           "100%": { "--angle": "360deg" },
         },
@@ -85,7 +85,7 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-         "trail": "trail var(--duration) linear infinite",
+        trail: "trail var(--duration) linear infinite",
       },
       backgroundImage: {
         "gradient-custom":
@@ -96,9 +96,15 @@ const config: Config = {
         geistMono: ["var(--font-geist-mono)", "Menlo", "monospace"], // Add Geist Mono
         amiri: ["var(--font-amiri)", "serif"], // Add Amiri
         cairo: ["var(--font-cairo)", "sans-serif"], // Add Cairo
+        tajawal: ["var(--font-tajawal)", "sans-serif"], // Add Tajawal
+        tajawalLight: ["var(--font-tajawal-light)", "sans-serif"], // Add Tajawal Light
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography"),require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+  ],
 };
 export default config;

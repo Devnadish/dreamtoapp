@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "../../public/logo.webp";
 import Link from "next/link";
-const Logo = ({locale}:{locale:string}) => {
+const Logo = ({ locale }: { locale: string }) => {
   return (
     <Link
       href={`/${locale}`}

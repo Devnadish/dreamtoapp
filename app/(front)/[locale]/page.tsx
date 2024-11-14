@@ -7,7 +7,8 @@ import { IcRoundTouchApp } from "@/components/icons/OurService";
 import SectionView from "@/components/post/SectionView";
 import { getData } from "@/sanity/lib/homePage/getAllservice";
 import { Suspense } from "react";
-import {getTranslations} from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
+import AnimatedModal from "@/components/AnimatedModal";
 // Metadata configuration using Next.js 15 metadata API
 export const metadata: Metadata = {
   title: "Dream To App",
@@ -37,8 +38,8 @@ const LoadingSection = () => (
   <div className="w-full h-48 animate-pulse bg-gray-200 dark:bg-gray-800 rounded-lg" />
 );
 
-export default async function Home({params}:{params:{locale:string}}) {
- const t = await getTranslations('HomePage');
+export default async function Home({ params }: { params: { locale: string } }) {
+  const t = await getTranslations("HomePage");
   const { locale } = await params;
   // Parallel data fetching with error handling
   const [services, experts, support, provide] = await Promise.all([
@@ -66,13 +67,14 @@ export default async function Home({params}:{params:{locale:string}}) {
     },
     {
       data: provide,
-      title:t("free"),
+      title: t("free"),
       icon: <MdiApprove width={38} height={38} />,
     },
   ];
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
+      {/* <AnimatedModal /> */}
       {sections.map((section, index) => (
         <Suspense key={section.title} fallback={<LoadingSection />}>
           <SectionView

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import  "@/styles/globals.css";
+import "@/styles/globals.css";
 import SideMenu from "@/components/headerAndFotter/SideMenu";
 import HeaderBar from "@/components/headerAndFotter/HeaderBar";
 import { SanityLive } from "@/sanity/lib/live";
@@ -10,18 +10,13 @@ import DisableDraftMode from "@/components/DisableDraftMode";
 import BodyContainer from "@/components/Container";
 import { ThemeProvider } from "@/components/theme-provider";
 
-
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages,getLocale} from 'next-intl/server';
-import {notFound} from 'next/navigation';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, getLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { getLangDir } from "rtl-detect";
 import { routing } from "@/i18n/routing";
-import { Toaster } from "@/components/ui/toaster"
-import { ClerkProvider } from '@clerk/nextjs'
-
-
-
-
+import { Toaster } from "@/components/ui/toaster";
+import AnimatedModal from "@/components/AnimatedModal";
 
 const outfit = localFont({
   src: "../../fonts/Outfit-Regular.ttf",
@@ -39,10 +34,22 @@ const amiri = localFont({
   variable: "--font-amiri",
   weight: "100 900",
 });
- 
+
 const cairo = localFont({
   src: "../../fonts/Cairo-Regular.ttf",
   variable: "--font-cairo",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
+const tajawal = localFont({
+  src: "../../fonts/Tajawal-Black.ttf",
+  variable: "--font-tajawal",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
+const tajawalLight = localFont({
+  src: "../../fonts/Tajawal-Light.ttf",
+  variable: "--font-tajawal-light",
   weight: "100 200 300 400 500 600 700 800 900",
 });
 
@@ -70,39 +77,30 @@ export default async function LocaleLayout({
   // side is the easiest way to get started
   const messages = await getMessages({ locale });
 
-
-
-
   return (
-    <ClerkProvider> 
-      <html  lang={locale} dir={direction}  suppressHydrationWarning>
-        <body
-          className={`${outfit.variable} ${geistMono.variable} ${amiri.variable} ${cairo.variable} antialiased`}
-        >
-           
+    <html lang={locale} dir={direction} suppressHydrationWarning>
+      <body
+        className={`${outfit.variable} ${geistMono.variable} ${amiri.variable} ${cairo.variable} ${tajawal.variable} ${tajawalLight.variable} antialiased`}
+      >
+        {(await draftMode()).isEnabled && (
+          <div className="hidden sm:block">
+            <DisableDraftMode />
+            <VisualEditing />
+          </div>
+        )}
 
-          {(await draftMode()).isEnabled && (
-            <div className="hidden sm:block">
-              <DisableDraftMode />
-              <VisualEditing />
-            </div>
-          )}
-
-          <ThemeProvider>
-            <NextIntlClientProvider messages={messages}>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
             <HeaderBar locale={locale} />
+            <AnimatedModal />
 
-            <BodyContainer>
-             
-              {children}
-              </BodyContainer>
+            <BodyContainer>{children}</BodyContainer>
             <SideMenu />
           </NextIntlClientProvider>
-          </ThemeProvider>
-          <SanityLive />
-         <Toaster />
-        </body>
-      </html>
-    </ClerkProvider>
+        </ThemeProvider>
+        <SanityLive />
+        <Toaster />
+      </body>
+    </html>
   );
 }

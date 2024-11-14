@@ -3,78 +3,70 @@
     "Service": "Our Service",
     "Expert": "Our Expert",
     "Support": "Our Support",
-    "free": "Free for you"
+    "free": "Free for you",
+    "dreamtoApp": "Dream to App"
   },
 
   "button": {
     "showMore": "Show More",
     "showLess": "Show Less",
     "showGallery": "Show Gallery",
-    "details": "Details"
+    "details": "Details",
+    "sending": "Sending..."
   },
 
-"workSample": {
-      "smMenuTilte": "Social Media",
-      "uiUxMenuTitle": "User Interface",
-      "identityMenuTitle": "Visual Identity",
-      "mixedMenuTitl": "Multimedia",
-      "singBoardMEnuTitle": "Bulletin Board",
-      "cncMenuTitle": "CNC Work",
-      "Character": "Character",
-      "Coverpage": "Cover Page",
-      "Logo": "Logo",
-      "flyer": "Flyer",
-      "infograph": "Infographic",
-      "menu": "Menu",
-      "package": "Package",
-      "poster": "Poster",
-      "pagetitle": "At Dream to App, we specialize in delivering exceptional web and mobile solutions tailored to your unique needs. Our skilled team combines cutting-edge technology with innovative design and visual identity to create user-friendly applications that enhance both functionality and user experience. We prioritize UI/UX principles to ensure every interaction is intuitive and engaging. With a strong commitment to quality and professionalism, we execute each project with efficiency and attention to detail. Partner with Dream to App to experience the difference that true expertise can make in your digital journey."
-    },
-    
- "services": {
-        "mobileApp": "Mobile App Development",
-        "mobileAppTitle": "Custom apps for a seamless user experience.",
+  "workSample": {
+    "smMenuTilte": "Social Media",
+    "uiUxMenuTitle": "User Interface",
+    "identityMenuTitle": "Visual Identity",
+    "mixedMenuTitl": "Multimedia",
+    "singBoardMEnuTitle": "Bulletin Board",
+    "cncMenuTitle": "CNC Work",
+    "Character": "Character",
+    "Coverpage": "Cover Page",
+    "Logo": "Logo",
+    "flyer": "Flyer",
+    "infograph": "Infographic",
+    "menu": "Menu",
+    "package": "Package",
+    "poster": "Poster",
+    "pagetitle": "At Dream to App, we specialize in delivering exceptional web and mobile solutions tailored to your unique needs. Our skilled team combines cutting-edge technology with innovative design and visual identity to create user-friendly applications that enhance both functionality and user experience. We prioritize UI/UX principles to ensure every interaction is intuitive and engaging. With a strong commitment to quality and professionalism, we execute each project with efficiency and attention to detail. Partner with Dream to App to experience the difference that true expertise can make in your digital journey."
+  },
 
-        "webApp": "Web App Development",
-        "webAppTitle": "Interactive web apps providing dynamic functionality.",
+  "services": {
+    "mobileApp": "Mobile App Development",
+    "mobileAppTitle": "Custom apps for a seamless user experience.",
 
-        "ecommerce": "E-commerce Solutions",
-        "ecommerceTitle": "Online stores that simplify buying and selling.",
+    "webApp": "Web App Development",
+    "webAppTitle": "Interactive web apps providing dynamic functionality.",
 
-        "design": "User Interface Design",
-        "designTitle": "Visually appealing and user-friendly interfaces.",
+    "ecommerce": "E-commerce Solutions",
+    "ecommerceTitle": "Online stores that simplify buying and selling.",
 
-        "digitalMarketing": "Digital Marketing",
-        "digitalMarketingTitle": "Promoting products through digital channels.",
+    "design": "User Interface Design",
+    "designTitle": "Visually appealing and user-friendly interfaces.",
 
-        "emailMarketing": "Email Marketing",
-        "emailMarketingTitle": "Targeted emails to boost engagement."
-      },
-"Free": {
-        "consultation": "Consultation",
-        "consultationTitle": "Get expert advice on web design and development at no cost!",
+    "digitalMarketing": "Digital Marketing",
+    "digitalMarketingTitle": "Promoting products through digital channels.",
 
-        "evaluation": "Free Evaluation", 
-        "evaluationTitle": "Free Evaluation for your digital projects!",
+    "emailMarketing": "Email Marketing",
+    "emailMarketingTitle": "Targeted emails to boost engagement."
+  },
+  "Free": {
+    "consultation": "Consultation",
+    "consultationTitle": "Get expert advice on web design and development at no cost!",
 
-        "idea": "Free Idea",
-        "ideaTitle": "Explore innovative ideas for your digital solutions without cost.",
+    "evaluation": "Free Evaluation",
+    "evaluationTitle": "Free Evaluation for your digital projects!",
 
-        "marketingIdea": "Marketing Idea",
-        "marketingIdeaTitle": "Customized marketing strategies tailored to your needs.",
+    "firstPurchaseDiscount": "First Purchase Discount",
+    "firstPurchaseDiscountTitle": "Enjoy a 20% discount on your first purchase!",
 
-        "firstPurchaseDiscount": "First Purchase Discount",
-        "firstPurchaseDiscountTitle": "Enjoy a 20% discount on your first purchase!",
-
-        "referralProgram": "Referral Program",
-        "referralProgramTitle": "Refer a friend and both earn $10 towards your next purchase!",
-
-        "personalizedConsultation": "Personalized Consultation",
-        "personalizedConsultationTitle": "Book a 30-minute free consultation tailored to your goals!",
-
-        "membershipBenefits": "Membership Benefits",
-        "membershipBenefitsTitle": "Join us for exclusive discounts and valuable resources!"
-      },
+    "referralProgram": "Referral Program",
+    "referralProgramTitle": "Refer a friend and both earn 100 SAR towards your next purchase!",
+    "WelcomeMsg": "Welcome to ",
+    "animatedMsg": "Sign up to enjoy personalized gifts!"
+  },
 
   "login": {
     "login": "Login",
@@ -101,9 +93,28 @@
     "notPerfect": "We are Not Perfect, But We are Working on it for you to be Perfect",
     "addQuestion": "Login to add a question",
     "welcome": "Welcome .."
-    
   },
 
+  "contactus": {
+    "pagetitle": "Contact Us",
+    "hint": "Correct information is required to help us respond as quickly as possible, providing the best possible service.",
+
+    "mobile": "Mobile Number",
+    "mobilePlaceHolder": "10-digit mobile number",
+    "mobileValidationError": "Must be at least 10 digits",
+
+    "email": "Email",
+    "emailPlaceHolder": "example@example.com",
+    "emailValidationError": "Invalid email",
+
+    "msg": "Message",
+    "msgplaceHolder": "How can we help you?",
+    "msgValidationError": "The minimum is 10 characters",
+    "sendBtn": "Send .. We are waiting for you",
+    "name": "Name",
+    "Done": "Done",
+    "doneMsg": "Thank you for your message. We will get back to you soon."
+  },
 
   "page": {
     "about": {
@@ -180,24 +191,6 @@
         "emailMarketing": "Email Marketing",
         "emailMarketingTitle": "Targeted emails to boost engagement."
       }
-    },
-
-    
-    "contactus": {
-      "pagetitle": "Contact Us",
-
-      "mobile": "Mobile Number",
-      "mobilePlaceHolder": "Please enter your 10-digit mobile number.",
-      "mobileValidationError": "Mobile number must be 10 digits",
-
-      "email": "Email",
-      "emailPlaceHolder": "example@example.com",
-      "emailValidationError": "you@example.com",
-
-      "msg": "Message",
-      "msgplaceHolder": "How can we help you?",
-      "msgValidationError": "Message must be at least 10 characters long",
-      "sendBtn": "send Message"
     }
   }
 }
